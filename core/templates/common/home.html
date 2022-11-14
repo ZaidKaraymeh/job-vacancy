@@ -1,0 +1,73 @@
+{% extends 'base.html' %} {% block content %} {% load params %}
+<script defer>
+  const onClick = (event) => {
+    var checkbox = document.getElementById(event.target.id);
+    console.log(localStorage.getItem(event.target.id));
+    if (localStorage.getItem(event.target.id) == "true") {
+      localStorage.setItem(event.target.id, false);
+    } else {
+      localStorage.setItem(event.target.id, true);
+    }
+    console.log("gtr");
+  };
+  window.addEventListener("onclick", onClick);
+
+  //for loading
+  /*  try {
+      checked = JSON.parse(localStorage.getItem("checkbox1"));
+    } catch (e) {
+        checked = false; // default value on error
+        if (typeof e === "object" && e.message) {
+            console.error(e.message);
+        }
+  }
+  document.getElementById("checkbox1").checked = checked; */
+</script>
+
+<div class="col-3 my-3">
+  <div class="card" stlye="min-width: 100%">
+    <div class="card-body">
+      <h6 class="card-title">Experience Level</h6>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'sort' 'diesel' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckChecked"
+        />
+        <!-- <a
+            onclick="onClick(event)"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckChecked"
+          checked
+          class="form-check-input"
+          href="#{% relative_url 'sort' 'diesel' request.GET %}"
+        >
+        </a> -->
+        <label class="form-check-label" for="flexCheckChecked">
+          Checked checkbox
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-9"></div>
+<script defer>
+  let checked;
+  for (var i = 0; i < localStorage.length; i++) {
+    if (localStorage.key(i).includes("Check")) {
+      let checkbox = document.getElementById(localStorage.key(i));
+      let is_checked = localStorage.getItem(localStorage.key(i));
+      if (is_checked == "true") {
+        checkbox.checked = true;
+    } else {
+        checkbox.checked = false;
+      }
+      console.log(checkbox, is_checked);
+    }
+  }
+</script>
+{% endblock content %}
