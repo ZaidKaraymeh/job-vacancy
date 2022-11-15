@@ -19,13 +19,26 @@ def relative_url(
     # QueryDicts are immutable by default.
     new_querydict = QueryDict(mutable=True)
     new_querydict.appendlist(param_key, param_value)
-
+    """ for key, value in new_querydict.items():
+        if key == param_key:
+            new_querydict.pop(key) """
     if not querydict:
         # No existing query params in the URL, so we're done.
         # We just needed to append the args that were
         # passed to this function.
         return f"?{new_querydict.urlencode()}"
     else:
+        """
+            Removes a param if unchecked in template
+        """
+        for key, value in querydict.items():
+            if key == param_key and new_querydict[key] != value:
+                new_querydict[key] = value
+                continue
+            if key == param_key:
+                new_querydict.pop(key)
+                
+
         # This means there are some existing params in the URL.
         # We'd like to append them now and return that URL.
         # At the same time, we want to ensure that the
@@ -35,4 +48,6 @@ def relative_url(
         for key, value in querydict.items():
             if key != param_key:
                 new_querydict.appendlist(key, value)
+        
+        #print(new_querydict)
         return f"?{new_querydict.urlencode()}"

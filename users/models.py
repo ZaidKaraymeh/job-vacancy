@@ -46,12 +46,12 @@ class CustomUser(AbstractUser):
 
     objects = UserManager()
 
-    phone_number = models.CharField(max_length=20, unique=True, null=True)
-    about = models.TextField(max_length=9000)
-    resume = models.FileField(upload_to='resumes', max_length=100)
-    education = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=20, unique=True, null=True, blank=True)
+    about = models.TextField(max_length=9000, null=True, blank=True)
+    resume = models.FileField(upload_to='resumes', max_length=100, null=True, blank=True)
+    education = models.CharField(max_length=255, null=True, blank=True)
 
-    birth_date = models.DateField(auto_now=False, auto_now_add=False)
+    birth_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -64,8 +64,9 @@ class CustomUser(AbstractUser):
     twentyfiveTwentysix = "2025/2026"
     twentysixTwentyseven = "2026/2027"
     UNKOWN = "UNKOWN"
-
+    NA = "NA"
     GRADUATION_YEAR_CHOICES = [
+        (NA, 'Not Applicable'),
         (twentyTwentyone, '2020/2021'),
         (twentyoneTwentytwo, '2021/2022'),
         (twentytwoTwentythree, '2022/2023'),
@@ -77,7 +78,7 @@ class CustomUser(AbstractUser):
     graduation_year = models.CharField(
         max_length=10,
         choices=GRADUATION_YEAR_CHOICES,
-        default=UNKOWN,
+        default=NA,
         null=True
     )
 
@@ -87,6 +88,7 @@ class CustomUser(AbstractUser):
     fourth_year = "4th"
 
     STUDY_YEAR_CHOICES = [
+        (NA, 'Not Applicable'),
         (first_year, '1st Year'),
         (second_year, "2nd Year"),
         (third_year, "3rd Year"),
@@ -96,19 +98,21 @@ class CustomUser(AbstractUser):
     study_year = models.CharField(
         max_length=10,
         choices=STUDY_YEAR_CHOICES,
-        default=UNKOWN,
+        default=NA,
         null=True
     )
 
     admin = "ADM"
     student = "STU"
+    recruiter = "REC"
 
     USER_TYPE_CHOICES = [
         (admin, "Admin"),
+        (recruiter, "Recruiter"),
         (student, "Student")
     ]
 
-    study_year = models.CharField(
+    user_type = models.CharField(
         max_length=10,
         choices=USER_TYPE_CHOICES,
         default=student,

@@ -6,15 +6,22 @@ class Company(models.Model):
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True)
 
+
+    representative = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE, null=True)
     name = models.CharField( max_length=255)
     about = models.TextField(max_length=9000)
     specialties = models.CharField(max_length=255)
     website = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=50)
     location = models.TextField(max_length=1000)
+    logo = models.FileField(upload_to='logo', max_length=100, default='def.jpg')
 
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
 
 class JobListing(models.Model):
     """
@@ -33,10 +40,13 @@ class JobListing(models.Model):
     job_level = models.ManyToManyField("core.JobLevel")
     job_type = models.ManyToManyField("core.JobType")
     job_place = models.ManyToManyField("core.JobPlace")
-    job_tags = models.ManyToManyField("core.JobTag")
+    job_tags = models.ManyToManyField("core.JobTag", blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return self.title
 
 class JobType(models.Model):
     """
@@ -50,6 +60,9 @@ class JobType(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 class JobPlace(models.Model):
     """
         On site - Remote - Hybrid
@@ -61,6 +74,9 @@ class JobPlace(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 class JobTag(models.Model):
     """
@@ -74,6 +90,9 @@ class JobTag(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 class JobLevel(models.Model):
     """
         Internship - Entry-level - Senior - etc..
@@ -85,6 +104,9 @@ class JobLevel(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 class Bookmark(models.Model):
     """
@@ -98,4 +120,7 @@ class Bookmark(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return self.job_listings.title
 

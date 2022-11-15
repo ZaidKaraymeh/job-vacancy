@@ -3,12 +3,13 @@
   const onClick = (event) => {
     var checkbox = document.getElementById(event.target.id);
     console.log(localStorage.getItem(event.target.id));
+
+    
     if (localStorage.getItem(event.target.id) == "true") {
       localStorage.setItem(event.target.id, false);
     } else {
       localStorage.setItem(event.target.id, true);
     }
-    console.log("gtr");
   };
   window.addEventListener("onclick", onClick);
 
@@ -27,30 +28,161 @@
 <div class="col-3 my-3">
   <div class="card" stlye="min-width: 100%">
     <div class="card-body">
+
       <h6 class="card-title">Experience Level</h6>
       <div class="form-check">
         <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'sort' 'diesel' request.GET %}`);"
+          onclick="onClick(event); window.location.assign(`{% relative_url  'internship' 'true' request.GET %}`);"
           class="form-check-input"
           type="checkbox"
           value=""
-          id="flexCheckChecked"
+          id="InternshipCheck"
         />
-        <!-- <a
-            onclick="onClick(event)"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="flexCheckChecked"
-          checked
-          class="form-check-input"
-          href="#{% relative_url 'sort' 'diesel' request.GET %}"
-        >
-        </a> -->
-        <label class="form-check-label" for="flexCheckChecked">
-          Checked checkbox
+        <label class="form-check-label" for="InternshipCheck">
+          Internship
         </label>
       </div>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'entrylevel' 'true' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="EntryLevelCheck"
+        />
+        <label class="form-check-label" for="EntryLevelCheck">
+          Entry Level
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'junior' 'true' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="JuniorCheck"
+        />
+        <label class="form-check-label" for="JuniorCheck">
+          Junior
+        </label>
+      </div>
+      <span class="d-inline-block" ></span>
+      <h6 class="card-title">Job Type</h6>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'fulltime' 'true' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="FulltimeCheck"
+        />
+        <label class="form-check-label" for="FulltimeCheck">
+          Full-Time
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'parttime' 'true' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="ParttimeCheck"
+        />
+        <label class="form-check-label" for="ParttimeCheck">
+          Part-Time
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'contract' 'true' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="ContractCheck"
+        />
+        <label class="form-check-label" for="ContractCheck">
+          Contract
+        </label>
+      </div>
+
+      <span class="d-inline-block" ></span>
+      <h6 class="card-title">Job Place</h6>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'onsite' 'true' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="OnSiteCheck"
+        />
+        <label class="form-check-label" for="OnSiteCheck">
+          On-Site
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'remote' 'true' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="RemoteCheck"
+        />
+        <label class="form-check-label" for="RemoteCheck">
+          Remote
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'Hybrid' 'true' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="HybridCheck"
+        />
+        <label class="form-check-label" for="HybridCheck">
+          Hybrid
+        </label>
+      </div>
+
+      <span class="d-inline-block" ></span>
+      <h6 class="card-title">Date Posted</h6>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '1' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="OneDayCheck"
+        />
+        <label class="form-check-label" for="OneDayCheck">
+          Last 24 Hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '7' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="SevenDaysCheck"
+        />
+        <label class="form-check-label" for="SevenDaysCheck">
+          Last Week
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '30' request.GET %}`);"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="OneMonthCheck"
+        />
+        <label class="form-check-label" for="OneMonthCheck">
+          Last Month
+        </label>
+      </div>
+
     </div>
   </div>
 </div>
