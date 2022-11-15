@@ -186,7 +186,31 @@
     </div>
   </div>
 </div>
-<div class="col-9"></div>
+<div class="col-9">
+  <div class="row">
+    {% for job in job_listings %}
+    <div class="col-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <img src="{{job.company.logo.url}}" alt="pic here">
+            </div>
+            <div class="col-8">
+                <h6 class="card-title">
+                  {{job.title}}
+                </h6>
+                <p class="text-muted">
+                  {{job.company.name}}
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 <script defer>
   let checked;
   for (var i = 0; i < localStorage.length; i++) {
