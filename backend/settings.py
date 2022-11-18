@@ -41,11 +41,14 @@ INSTALLED_APPS = [
     'core',
     'crispy_forms',
     'django_filters',
+    'fontawesomefree',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -140,4 +143,5 @@ MESSAGE_TAGS = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000']
 AUTH_USER_MODEL = 'users.CustomUser'

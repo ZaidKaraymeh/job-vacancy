@@ -1,3 +1,24 @@
 body {
     background-color: #F8F8F8;
 }
+
+.txt-1 {
+    font-size: 16px;
+}
+.txt-2 {
+    font-size: 18px;
+}
+
+.job-card:hover {
+    box-shadow: 1px 3px 10px grey;
+    -webkit-transition:  box-shadow .2s ease-in;
+}
+
+.job-a{
+    color: inherit !important;
+}
+
+
+#bookmarked {
+    cursor: pointer;
+}
