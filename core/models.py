@@ -37,7 +37,7 @@ class JobListing(models.Model):
     description = models.TextField(max_length=9000)
     is_active = models.BooleanField(default=True)
 
-    applicants = models.ManyToManyField("users.CustomUser", related_name="applicants")
+    applicants = models.ManyToManyField("users.CustomUser", related_name="applicants", blank=True)
     job_level = models.ManyToManyField("core.JobLevel")
     job_type = models.ManyToManyField("core.JobType")
     job_place = models.ManyToManyField("core.JobPlace")

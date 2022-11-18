@@ -2,6 +2,10 @@ body {
     background-color: #F8F8F8;
 }
 
+* {
+    padding: 0px;
+}
+
 .txt-1 {
     font-size: 16px;
 }
@@ -21,4 +25,8 @@ body {
 
 #bookmarked {
     cursor: pointer;
+}
+
+.container-max-width {
+    max-width: 1000px !important;
 }

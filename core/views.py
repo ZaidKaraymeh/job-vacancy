@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from users.models import CustomUser
 from django.contrib import messages
@@ -15,14 +15,41 @@ def home(request):
     job_levels = JobLevel.objects.all()
     user_bookmark = Bookmark.objects.get(user=request.user)
     context = {
-        'job_listings' : job_listings,
+        'job_listings': job_listings,
         'job_types': job_types,
         'job_places': job_places,
         'job_levels': job_levels,
         'bookmark': user_bookmark
     }
-    
+
     return render(request, 'common/home.html', context)
+
+
+def job_listing_detail(request, job_listing_id):
+    user = request.user
+    job_listing = JobListing.objects.get(id=job_listing_id)
+    user_bookmark = Bookmark.objects.get(user=request.user)
+    context = {
+        'user': user,
+        'job': job_listing,
+        'bookmark': user_bookmark
+    }
+    if user in job_listing.applicants.all():
+        context['is_applied'] = True
+    else:
+        context['is_applied'] = False
+
+
+    return render(request, 'common/job_listing_detail.html', context)
+
+
+def job_listing_apply(request, job_listing_id):
+    user = request.user
+    job_listing = JobListing.objects.get(id=job_listing_id)
+    job_listing.applicants.add(user)
+    print(job_listing.applicants.all())
+    messages.success(request, "Application Submitted Sucessfully")
+    return redirect('job_listing_detail', job_listing_id)
 
 
 def bookmark(request, user_id, job_listing_id):
@@ -41,5 +68,5 @@ def bookmark(request, user_id, job_listing_id):
             data = {'bookmark': True}
 
         return JsonResponse(
-            data=data, 
+            data=data,
             safe=False)

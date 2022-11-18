@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container container-max-width bg-white px-5 py-2 my-3">
+    <div class="row">
+        <div class="col-8 mt-5 mb-3">
+            <h4 class="text-muted" >
+                {{job.company.name}}
+            </h4>
+            <h1>
+                {{job.title}}
+            </h1>
+            
+        </div>
+        <div class="col-4 mt-5 text-end text-info">
+            {% if is_applied %}
+                <h6>
+                    <i class="fa-solid fa-circle-check"></i> Submitted Application
+                </h6>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class=" d-flex my-4">
+                <span class="text-muted d-flex gap-4" >
+                    {% for tag in job.job_level.all %}
+                    <p class="txt-1 text-bg-info px-2 py-1 rounded">
+                        <i class="fa-solid fa-user-graduate me-2"></i> {{tag}} 
+                    </p>
+                    {% endfor %}
+                    {% for tag in job.job_type.all %}
+                    <p class="txt-1 text-bg-info px-2 py-1 rounded">
+                        <i class="fa-sharp fa-solid fa-briefcase me-2"></i> {{tag}} 
+                    </p>
+                    {% endfor %}
+                    {% for tag in job.job_place.all %}
+                        <p class="txt-1 text-bg-info px-2 py-1 rounded">
+                            <i class="fa-solid fa-desktop me-2"></i> {{tag}} 
+                        </p>
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-8">
+            <h6 class="mb-3" >
+                Job Poster:
+            </h6>
+            <p class="mb-1" >
+                {{job.job_poster.first_name}} {{job.job_poster.last_name}}
+            </p>
+            <p>
+                {{job.job_poster.email}} 
+            </p>
+        </div>
+        <div class="col-xl-4 col-xs-12 d-flex justify-content-xl-end align-items-center gap-2">
+            {% if is_applied %}
+                <button type="button" class="btn btn-primary " disabled>
+                    Apply
+                </button>
+            {% else %}
+                <a href="{% url 'job_listing_apply' job.id %}"  class="btn btn-primary " disabled >
+                    Apply
+                </a>
+            {% endif %}
+            <a href="#" class="btn btn-white text-black border" >
+                Share
+            </a>
+            {% if job in bookmark.job_listings.all %}
+                <i id="bookmarked" onclick="bookmark()" class="fa-solid fa-bookmark fa-2xl"></i>
+            {% else %}
+                <i id="bookmarked" onclick="bookmark()" class="fa-regular fa-bookmark fa-2xl"></i>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <h6 class="mb-3" >
+                Job Description:
+            </h6>
+            <p class="mb-1" >
+                {{job.description|linebreaks}} 
+            </p>
+        </div>
+    </div>
+</div>
+
+<script defer>
+    function bookmark() {
+            fetch(`http://127.0.0.1:8000/bookmark/{{request.user.id}}/{{job.id}}`, {
+            method: 'GET', // or 'PUT'
+            headers: {
+            },
+
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                let icon = document.getElementById("bookmarked")
+                if (icon.classList.contains('fa-regular')){
+                icon.classList.remove('fa-regular')
+                icon.classList.add('fa-solid')
+                } else {
+                icon.classList.add('fa-regular')
+                icon.classList.remove('fa-solid')
+                }
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+
+            });
+        }
+</script>
+
+{% endblock content %}

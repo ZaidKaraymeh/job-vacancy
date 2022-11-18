@@ -24,303 +24,305 @@
   }
   document.getElementById("checkbox1").checked = checked; */
 </script>
+<div class="row">
+  <div class="col-2 my-3">
+    <div class="card" stlye="min-width: 100%">
+      <div class="card-body">
 
-<div class="col-2 my-3">
-  <div class="card" stlye="min-width: 100%">
-    <div class="card-body">
+        <h6 class="card-title">Experience Level</h6>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'internship' 'true' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="InternshipCheck"
+          />
+          <label class="form-check-label" for="InternshipCheck">
+            Internship
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'entrylevel' 'true' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="EntryLevelCheck"
+          />
+          <label class="form-check-label" for="EntryLevelCheck">
+            Entry Level
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'junior' 'true' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="JuniorCheck"
+          />
+          <label class="form-check-label" for="JuniorCheck">
+            Junior
+          </label>
+        </div>
+        <span class="d-inline-block" ></span>
+        <h6 class="card-title">Job Type</h6>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'fulltime' 'true' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="FulltimeCheck"
+          />
+          <label class="form-check-label" for="FulltimeCheck">
+            Full-Time
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'parttime' 'true' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="ParttimeCheck"
+          />
+          <label class="form-check-label" for="ParttimeCheck">
+            Part-Time
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'contract' 'true' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="ContractCheck"
+          />
+          <label class="form-check-label" for="ContractCheck">
+            Contract
+          </label>
+        </div>
 
-      <h6 class="card-title">Experience Level</h6>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'internship' 'true' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="InternshipCheck"
-        />
-        <label class="form-check-label" for="InternshipCheck">
-          Internship
-        </label>
-      </div>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'entrylevel' 'true' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="EntryLevelCheck"
-        />
-        <label class="form-check-label" for="EntryLevelCheck">
-          Entry Level
-        </label>
-      </div>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'junior' 'true' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="JuniorCheck"
-        />
-        <label class="form-check-label" for="JuniorCheck">
-          Junior
-        </label>
-      </div>
-      <span class="d-inline-block" ></span>
-      <h6 class="card-title">Job Type</h6>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'fulltime' 'true' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="FulltimeCheck"
-        />
-        <label class="form-check-label" for="FulltimeCheck">
-          Full-Time
-        </label>
-      </div>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'parttime' 'true' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="ParttimeCheck"
-        />
-        <label class="form-check-label" for="ParttimeCheck">
-          Part-Time
-        </label>
-      </div>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'contract' 'true' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="ContractCheck"
-        />
-        <label class="form-check-label" for="ContractCheck">
-          Contract
-        </label>
-      </div>
+        <span class="d-inline-block" ></span>
+        <h6 class="card-title">Job Place</h6>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'onsite' 'true' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="OnSiteCheck"
+          />
+          <label class="form-check-label" for="OnSiteCheck">
+            On-Site
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'remote' 'true' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="RemoteCheck"
+          />
+          <label class="form-check-label" for="RemoteCheck">
+            Remote
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'Hybrid' 'true' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="HybridCheck"
+          />
+          <label class="form-check-label" for="HybridCheck">
+            Hybrid
+          </label>
+        </div>
 
-      <span class="d-inline-block" ></span>
-      <h6 class="card-title">Job Place</h6>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'onsite' 'true' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="OnSiteCheck"
-        />
-        <label class="form-check-label" for="OnSiteCheck">
-          On-Site
-        </label>
-      </div>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'remote' 'true' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="RemoteCheck"
-        />
-        <label class="form-check-label" for="RemoteCheck">
-          Remote
-        </label>
-      </div>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'Hybrid' 'true' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="HybridCheck"
-        />
-        <label class="form-check-label" for="HybridCheck">
-          Hybrid
-        </label>
-      </div>
+        <span class="d-inline-block" ></span>
+        <h6 class="card-title">Date Posted</h6>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '1' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="OneDayCheck"
+          />
+          <label class="form-check-label" for="OneDayCheck">
+            Last 24 Hours
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '7' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="SevenDaysCheck"
+          />
+          <label class="form-check-label" for="SevenDaysCheck">
+            Last Week
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '30' request.GET %}`);"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="OneMonthCheck"
+          />
+          <label class="form-check-label" for="OneMonthCheck">
+            Last Month
+          </label>
+        </div>
 
-      <span class="d-inline-block" ></span>
-      <h6 class="card-title">Date Posted</h6>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '1' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="OneDayCheck"
-        />
-        <label class="form-check-label" for="OneDayCheck">
-          Last 24 Hours
-        </label>
       </div>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '7' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="SevenDaysCheck"
-        />
-        <label class="form-check-label" for="SevenDaysCheck">
-          Last Week
-        </label>
-      </div>
-      <div class="form-check">
-        <input
-          onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '30' request.GET %}`);"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="OneMonthCheck"
-        />
-        <label class="form-check-label" for="OneMonthCheck">
-          Last Month
-        </label>
-      </div>
-
     </div>
   </div>
-</div>
-<div class="col-10 my-3">
-  <div class="row">
-    {% for job in job_listings %}
-    <div class="col-4 mb-3">
-      <a href="#" class="text-decoration-none job-a">
-        <div class="card job-card px-2">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-5">
-                <img class="card-img" src="{{job.company.logo.url}}" alt="pic here">
-              </div>
-              <div class="col-7">
-                  <h6 class="card-title">
-                    {{job.title}}
-                  </h6>
-                  
-                  <p class="text-muted txt-1">
-                    {{job.company.name}}
-                  </p>
-              </div>
-            </div>
-            <div class="row   mt-3 ">
-              <div class="col-12 d-flex justify-content-">
-                <span class="text-muted d-flex gap-4" >
-                  {% for tag in job.job_level.all %}
-                    <p class="txt-1 text-bg-info px-2 py-1 rounded">
-                      {{tag}} 
+  <div class="col-10 my-3 p-0">
+    <div class="row">
+      {% for job in job_listings %}
+      <div class="col-4 mb-3 ">
+          <div class="card job-card px-2 " style="max-height: 18rem; min-height: 18rem;">
+            <div class="card-body">
+        <a href="{% url 'job_listing_detail' job.id %}" class="text-decoration-none job-a">
+
+              <div class="row">
+                <div class="col-5">
+                  <img class="card-img" src="{{job.company.logo.url}}" alt="pic here">
+                </div>
+                <div class="col-7">
+                    <h6 class="card-title">
+                      {{job.title}}
+                    </h6>
+                    
+                    <p class="text-muted txt-1">
+                      {{job.company.name}}
                     </p>
-                    {% endfor %}
-                    {% for tag in job.job_type.all %}
-                    <p class="txt-1 text-bg-info px-2 py-1 rounded">
-                      {{tag}} 
-                    </p>
-                    {% endfor %}
-                    {% for tag in job.job_place.all %}
+                </div>
+              </div>
+              <div class="row   mt-3 ">
+                <div class="col-12 d-flex justify-content-">
+                  <span class="text-muted d-flex gap-4" >
+                    {% for tag in job.job_level.all %}
                       <p class="txt-1 text-bg-info px-2 py-1 rounded">
                         {{tag}} 
                       </p>
-                  {% endfor %}
-                </span>
+                      {% endfor %}
+                      {% for tag in job.job_type.all %}
+                      <p class="txt-1 text-bg-info px-2 py-1 rounded">
+                        {{tag}} 
+                      </p>
+                      {% endfor %}
+                      {% for tag in job.job_place.all %}
+                        <p class="txt-1 text-bg-info px-2 py-1 rounded">
+                          {{tag}} 
+                        </p>
+                    {% endfor %}
+                  </span>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-12 ">
-                <p class="txt-1" >
-                  {{job.name}} specializes in {{job.company.specialties|truncatewords:10}}
-                </p>
+              <div class="row">
+                <div class="col-12 ">
+                  <p class="txt-1" >
+                    {{job.name}} specializes in {{job.company.specialties|truncatewords:10}}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-4 d-flex justify-content-start align-items-center">
-                <p class="txt-1 text-muted" >
-                  {{job.created_at|time_since }}'s ago
-                </p>
-              </div>
-              <div class="col-4 d-flex justify-content-start align-items-center">
-                <p class="txt-1" >
-                  {{job.applicants.count}} Applicants
-                </p>
-              </div>
-              <div class="col-4 d-flex justify-content-end">
-                {% if job in bookmark.job_listings.all %}
-                  <i id="bookmarked" onclick="bookmark()" class="fa-solid fa-bookmark"></i>
-                {% else %}
-                  <i id="bookmarked" onclick="bookmark()" class="fa-regular fa-bookmark"></i>
-                {% endif %}
+         </a>
+              <div class="row">
+                <div class="col-4 d-flex justify-content-start align-items-center">
+                  <p class="txt-1 text-muted" >
+                    {{job.created_at|time_since }}'s ago
+                  </p>
+                </div>
+                <div class="col-4 d-flex justify-content-start align-items-center">
+                  <p class="txt-1" >
+                    {{job.applicants.count}} Applicants
+                  </p>
+                </div>
+                <div class="col-4 d-flex justify-content-end">
+                  {% if job in bookmark.job_listings.all %}
+                    <i id="bookmarked" style="z-index: 5;" onclick="bookmark()" class="fa-solid fa-bookmark"></i>
+                  {% else %}
+                    <i id="bookmarked" style="z-index: 5;" onclick="bookmark()" class="fa-regular fa-bookmark"></i>
+                  {% endif %}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </a>
 
-    </div>
-    <script defer>
-      function getCookie(name) {
-        if (!document.cookie) {
-          return null;
+      </div>
+      <script defer>
+        function getCookie(name) {
+          if (!document.cookie) {
+            return null;
+          }
+
+          const xsrfCookies = document.cookie.split(';')
+            .map(c => c.trim())
+            .filter(c => c.startsWith(name + '='));
+
+          if (xsrfCookies.length === 0) {
+            return null;
+          }
+          return decodeURIComponent(xsrfCookies[0].split('=')[1]);
         }
-
-        const xsrfCookies = document.cookie.split(';')
-          .map(c => c.trim())
-          .filter(c => c.startsWith(name + '='));
-
-        if (xsrfCookies.length === 0) {
-          return null;
-        }
-        return decodeURIComponent(xsrfCookies[0].split('=')[1]);
-      }
-      function bookmark() {
-        const csrfToken = getCookie('X-CSRFToken')
-        fetch(`http://127.0.0.1:8000/bookmark/{{request.user.id}}/{{job.id}}`, {
-          method: 'GET', // or 'PUT'
-          headers: {
-            'X-CSRFToken': csrfToken
-          },
-
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log('Success:', data);
-            let icon = document.getElementById("bookmarked")
-            if (icon.classList.contains('fa-regular')){
-              icon.classList.remove('fa-regular')
-              icon.classList.add('fa-solid')
-            } else {
-              icon.classList.add('fa-regular')
-              icon.classList.remove('fa-solid')
-            }
+        function bookmark() {
+          const csrfToken = getCookie('X-CSRFToken')
+          fetch(`http://127.0.0.1:8000/bookmark/{{request.user.id}}/{{job.id}}`, {
+            method: 'GET', // or 'PUT'
+            headers: {
+              'X-CSRFToken': csrfToken
+            },
 
           })
-          .catch((error) => {
-            console.error('Error:', error);
-            console.log(csrfToken8)
+            .then((response) => response.json())
+            .then((data) => {
+              console.log('Success:', data);
+              let icon = document.getElementById("bookmarked")
+              if (icon.classList.contains('fa-regular')){
+                icon.classList.remove('fa-regular')
+                icon.classList.add('fa-solid')
+              } else {
+                icon.classList.add('fa-regular')
+                icon.classList.remove('fa-solid')
+              }
 
-          });
-      }
-    </script>
-    {% endfor %}
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+              console.log(csrfToken8)
+
+            });
+        }
+      </script>
+      {% endfor %}
+    </div>
   </div>
-</div>
-<script defer>
-  let checked;
-  for (var i = 0; i < localStorage.length; i++) {
-    if (localStorage.key(i).includes("Check")) {
-      let checkbox = document.getElementById(localStorage.key(i));
-      let is_checked = localStorage.getItem(localStorage.key(i));
-      if (is_checked == "true") {
-        checkbox.checked = true;
-    } else {
-        checkbox.checked = false;
+  <script defer>
+    let checked;
+    for (var i = 0; i < localStorage.length; i++) {
+      if (localStorage.key(i).includes("Check")) {
+        let checkbox = document.getElementById(localStorage.key(i));
+        let is_checked = localStorage.getItem(localStorage.key(i));
+        if (is_checked == "true") {
+          checkbox.checked = true;
+      } else {
+          checkbox.checked = false;
+        }
+        console.log(checkbox, is_checked);
       }
-      console.log(checkbox, is_checked);
     }
-  }
-</script>
+  </script>
+</div>
 
 
 {% endblock content %}
