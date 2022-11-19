@@ -30,3 +30,7 @@ body {
 .container-max-width {
     max-width: 1000px !important;
 }
+
+.font-bold {
+    font-weight: bold;
+}

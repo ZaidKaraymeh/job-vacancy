@@ -109,6 +109,21 @@ class JobLevel(models.Model):
     def __str__(self):
         return self.name
 
+class Skill(models.Model):
+    """
+        Frontend - Backend - etc..
+    """
+    id = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    
+    name = models.CharField(max_length=50)
+
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return self.name
+
 class Bookmark(models.Model):
     """
         Bookmark job listings
@@ -124,4 +139,5 @@ class Bookmark(models.Model):
 
     def __str__(self):
         return self.job_listings.title
+
 

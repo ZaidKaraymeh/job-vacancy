@@ -57,16 +57,15 @@ def bookmark(request, user_id, job_listing_id):
     if request.method == "GET":
         obj, created = Bookmark.objects.get_or_create(user=user)
         job_listing = JobListing.objects.get(id=job_listing_id)
-        data = {}
         if job_listing in obj.job_listings.all():
             obj.job_listings.remove(job_listing)
             print(obj.job_listings.all())
-            data = {'bookmark': False}
         else:
             obj.job_listings.add(job_listing)
             print(obj.job_listings.all())
-            data = {'bookmark': True}
+        data = {'bookmark': job_listing.id}
 
         return JsonResponse(
             data=data,
             safe=False)
+

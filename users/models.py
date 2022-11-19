@@ -50,11 +50,13 @@ class CustomUser(AbstractUser):
     about = models.TextField(max_length=9000, null=True, blank=True)
     resume = models.FileField(upload_to='resumes', max_length=100, null=True, blank=True)
     education = models.CharField(max_length=255, null=True, blank=True)
+    skills = models.ManyToManyField("core.Skill")
 
     birth_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     modified_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
 
     twentyTwentyone = "2020/2021"
     twentyoneTwentytwo = "2021/2022"

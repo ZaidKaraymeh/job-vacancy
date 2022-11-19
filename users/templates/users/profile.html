@@ -1,25 +1,38 @@
-{% extends "sis/base.html" %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
-      <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <div class="media-body">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
-        </div>
-      </div>
-      {% comment %} exctype="multipart/form-data" to save the image {% endcomment %}
-      <form method="POST" exctype="multipart/form-data" >
-        {% csrf_token %}
-
-        <fieldset class="form-group" > 
-            {{ userUpdateForm|crispy }}
-            {{ profileUpdateForm|crispy }}
-        </fieldset>
-        <div class="form-group">
-            <button type="submit" class="btn btn-outline-secondary" > Update </button>
-        </div>
-      </form>
+<div class="container container-max-width bg-white my-3 px-5 py-4">
+  <div class="row ">
+    <div class="col-xl-8">
+      <h3>
+        {{user.first_name}} {{user.last_name}}
+      </h3>
+      <h5>
+        {{user.education}} 
+      </h5>
+      <h6 class="text-muted" >
+        Expected Graduation {{user.graduation_year}} 
+      </h6>
+      <a href="{{user.resume.url}}" target="_blank" class="fs-6 text-primary text-decoration-none" >
+        Download Resume
+      </a>
     </div>
+    <div class="col-xl-4 d-flex justify-content-xl-end align-items-start">
+      <a href="#"  class="btn btn-primary "  >
+            Edit
+        </a>
+    </div>
+  </div>
+  <div class="row mt-3 border-top pt-3">
+        <div class="col-12">
+            <h5 class="mb-3 font-bold" >
+                About:
+            </h5>
+            <p class="mb-1" >
+                {{user.about|linebreaks}} 
+            </p>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}

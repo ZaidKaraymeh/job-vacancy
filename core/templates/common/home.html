@@ -24,12 +24,12 @@
   }
   document.getElementById("checkbox1").checked = checked; */
 </script>
-<div class="row">
-  <div class="col-2 my-3">
-    <div class="card" stlye="min-width: 100%">
+<div class="row w-100 my-3" >
+  <div class="col-xl-2 col-md-4 pe-0">
+    <div class="card">
       <div class="card-body">
 
-        <h6 class="card-title">Experience Level</h6>
+        <h6 class="card-title font-bold">Experience Level</h6>
         <div class="form-check">
           <input
             onclick="onClick(event); window.location.assign(`{% relative_url  'internship' 'true' request.GET %}`);"
@@ -67,7 +67,7 @@
           </label>
         </div>
         <span class="d-inline-block" ></span>
-        <h6 class="card-title">Job Type</h6>
+        <h6 class="card-title font-bold">Job Type</h6>
         <div class="form-check">
           <input
             onclick="onClick(event); window.location.assign(`{% relative_url  'fulltime' 'true' request.GET %}`);"
@@ -106,7 +106,7 @@
         </div>
 
         <span class="d-inline-block" ></span>
-        <h6 class="card-title">Job Place</h6>
+        <h6 class="card-title font-bold">Job Place</h6>
         <div class="form-check">
           <input
             onclick="onClick(event); window.location.assign(`{% relative_url  'onsite' 'true' request.GET %}`);"
@@ -145,7 +145,7 @@
         </div>
 
         <span class="d-inline-block" ></span>
-        <h6 class="card-title">Date Posted</h6>
+        <h6 class="card-title font-bold">Date Posted</h6>
         <div class="form-check">
           <input
             onclick="onClick(event); window.location.assign(`{% relative_url  'dateposted' '1' request.GET %}`);"
@@ -186,11 +186,11 @@
       </div>
     </div>
   </div>
-  <div class="col-10 my-3 p-0">
+  <div class="col-xl-10 col-md-8">
     <div class="row">
       {% for job in job_listings %}
-      <div class="col-4 mb-3 ">
-          <div class="card job-card px-2 " style="max-height: 18rem; min-height: 18rem;">
+      <div class="col-xxl-4 col-xl-6 col-lg-12 mb-3 ">
+          <div class="card job-card px-2 " style="max-height: 34rem; min-height: 18rem;">
             <div class="card-body">
         <a href="{% url 'job_listing_detail' job.id %}" class="text-decoration-none job-a">
 
@@ -199,7 +199,7 @@
                   <img class="card-img" src="{{job.company.logo.url}}" alt="pic here">
                 </div>
                 <div class="col-7">
-                    <h6 class="card-title">
+                    <h6 class="card-title font-bold">
                       {{job.title}}
                     </h6>
                     
@@ -250,9 +250,9 @@
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                   {% if job in bookmark.job_listings.all %}
-                    <i id="bookmarked" style="z-index: 5;" onclick="bookmark()" class="fa-solid fa-bookmark"></i>
+                    <i id="{{job.id}}" style="z-index: 5;" onclick="bookmark('{{job.id}}')" class="fa-solid fa-bookmark"></i>
                   {% else %}
-                    <i id="bookmarked" style="z-index: 5;" onclick="bookmark()" class="fa-regular fa-bookmark"></i>
+                    <i id="{{job.id}}" style="z-index: 5;" onclick="bookmark('{{job.id}}')" class="fa-regular fa-bookmark"></i>
                   {% endif %}
                 </div>
               </div>
@@ -275,9 +275,9 @@
           }
           return decodeURIComponent(xsrfCookies[0].split('=')[1]);
         }
-        function bookmark() {
+        function bookmark(job_id) {
           const csrfToken = getCookie('X-CSRFToken')
-          fetch(`http://127.0.0.1:8000/bookmark/{{request.user.id}}/{{job.id}}`, {
+          fetch(`http://127.0.0.1:8000/bookmark/{{request.user.id}}/${job_id}`, {
             method: 'GET', // or 'PUT'
             headers: {
               'X-CSRFToken': csrfToken
@@ -287,7 +287,7 @@
             .then((response) => response.json())
             .then((data) => {
               console.log('Success:', data);
-              let icon = document.getElementById("bookmarked")
+              let icon = document.getElementById(data.bookmark)
               if (icon.classList.contains('fa-regular')){
                 icon.classList.remove('fa-regular')
                 icon.classList.add('fa-solid')
@@ -309,18 +309,21 @@
   </div>
   <script defer>
     let checked;
+
+    
     for (var i = 0; i < localStorage.length; i++) {
       if (localStorage.key(i).includes("Check")) {
         let checkbox = document.getElementById(localStorage.key(i));
         let is_checked = localStorage.getItem(localStorage.key(i));
         if (is_checked == "true") {
           checkbox.checked = true;
-      } else {
+        } else {
           checkbox.checked = false;
         }
         console.log(checkbox, is_checked);
       }
     }
+    
   </script>
 </div>
 
